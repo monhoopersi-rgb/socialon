@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>socialon.com — Дагагч & Үзэлт</title>
+<style>
+  :root{
+    --bg:#12141A;
+    --bg-soft:#1A1D26;
+    --card:#20232E;
+    --line:#2C303D;
+    --text:#F1F2F5;
+    --text-dim:#9BA0AE;
+    --teal:#00D9A3;
+    --coral:#FF5470;
+    --fb:#4C8DFF;
+    --ig1:#FF5470;
+    --ig2:#FFB84C;
+    --tt:#25F4EE;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(18,20,26,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:Georgia,serif;font-weight:700;font-size:22px;letter-spacing:0.01em;}
+  .logo span{color:var(--teal);}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--text-dim);}
+  .nav-links a:hover{color:var(--text);}
+  .g-signin{
+    display:flex;align-items:center;gap:8px;
+    background:#fff;color:#1f1f1f;border-radius:8px;
+    padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;
+    border:1px solid #dadce0;
+  }
+
+  /* HERO */
+  .hero{padding:88px 0 64px;position:relative;overflow:hidden;}
+  .hero:before{
+    content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(0,217,163,0.18),transparent 70%);
+    pointer-events:none;
+  }
+  /* FLOATING 3D PLATFORM ICONS */
+  .float-icons{position:absolute;inset:0;pointer-events:none;perspective:900px;}
+  .float-icon{
+    position:absolute;width:64px;height:64px;border-radius:18px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 20px 40px -10px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06) inset;
+    animation:floaty 7s ease-in-out infinite;
+    transform-style:preserve-3d;
+  }
+  .float-icon svg{width:32px;height:32px;}
+  .fi-fb{background:linear-gradient(145deg,#5B93FF,#3866C9);top:18%;right:14%;animation-delay:0s;}
+  .fi-ig{background:linear-gradient(145deg,#FF7A59,#C13584,#5851DB);top:52%;right:4%;animation-delay:1.4s;}
+  .fi-tt{background:linear-gradient(145deg,#25F4EE,#161823);top:68%;right:22%;animation-delay:2.6s;}
+  @keyframes floaty{
+    0%,100%{transform:translateY(0px) rotateX(8deg) rotateY(-10deg);}
+    50%{transform:translateY(-18px) rotateX(-6deg) rotateY(10deg);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .float-icon{animation:none;}
+  }
+  @media (max-width:820px){ .float-icons{display:none;} }
+
+  .platform-icon{display:inline-flex;width:16px;height:16px;vertical-align:-3px;margin-right:6px;}
+  .platform-icon svg{width:100%;height:100%;}
+  .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--teal);border:1px solid rgba(0,217,163,0.35);padding:6px 12px;border-radius:100px;
+    margin-bottom:20px;
+  }
+  .hero h1{font-size:46px;line-height:1.08;max-width:660px;}
+  .hero h1 em{font-style:normal;color:var(--teal);}
+  .hero p{color:var(--text-dim);font-size:17px;max-width:520px;margin-top:18px;}
+  .hero-cta{margin-top:32px;display:flex;gap:14px;}
+  .btn{
+    display:inline-block;padding:14px 26px;border-radius:10px;font-weight:600;font-size:15px;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--teal);color:#0A0E0C;}
+  .btn-primary:hover{filter:brightness(1.08);}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-dim);}
+
+  .stat-row{display:flex;gap:36px;margin-top:56px;flex-wrap:wrap;}
+  .stat{border-left:2px solid var(--line);padding-left:14px;}
+  .stat b{display:block;font-size:26px;font-family:Georgia,serif;color:var(--text);}
+  .stat span{font-size:13px;color:var(--text-dim);}
+
+  /* SECTION HEADERS */
+  .section{padding:64px 0;border-top:1px solid var(--line);}
+  .section-head{margin-bottom:32px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:30px;}
+  .section-head p{color:var(--text-dim);margin-top:8px;max-width:560px;}
+
+  /* TABS */
+  .tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+  .tab{
+    padding:10px 20px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);color:var(--text-dim);
+  }
+  .tab.active{color:#0A0E0C;border-color:transparent;}
+  .type-tabs .tab.active{background:var(--text);color:#0A0E0C;}
+  .tab.active[data-platform="Facebook"]{background:var(--fb);color:#fff;}
+  .tab.active[data-platform="Instagram"]{background:linear-gradient(90deg,var(--ig1),var(--ig2));}
+  .tab.active[data-platform="Instagram Reels"]{background:linear-gradient(90deg,var(--ig1),var(--ig2));}
+  .tab.active[data-platform="TikTok"]{background:var(--tt);color:#0A0E0C;}
+
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:22px;perspective:800px;}
+  .price-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,border-color .15s;
+    transform-style:preserve-3d;will-change:transform;
+  }
+  .price-card:hover{border-color:var(--teal);box-shadow:0 22px 40px -14px rgba(0,217,163,0.28);}
+  .price-card .num{font-family:Georgia,serif;font-size:24px;}
+  .price-card .lbl{color:var(--text-dim);font-size:13px;margin-top:2px;}
+  .price-card .amt{margin-top:14px;font-size:20px;font-weight:700;color:var(--teal);}
+
+  /* ORDER FORM */
+  .order-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;}
+  @media (max-width:760px){.order-grid{grid-template-columns:1fr;}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .card h3{font-size:18px;margin-bottom:18px;}
+  label{display:block;font-size:13px;color:var(--text-dim);margin-bottom:6px;margin-top:16px;}
+  label:first-child{margin-top:0;}
+  select,input[type=text],input[type=email],input[type=url]{
+    width:100%;background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;
+    padding:11px 12px;color:var(--text);font-size:14px;
+  }
+  select:focus,input:focus{outline:none;border-color:var(--teal);}
+  .checkbox-row{display:flex;align-items:flex-start;gap:10px;margin-top:18px;font-size:13px;color:var(--text-dim);}
+  .checkbox-row input{margin-top:3px;}
+  .checkbox-row a{color:var(--teal);text-decoration:underline;}
+
+  .bank-box{background:var(--bg-soft);border:1px dashed var(--line);border-radius:10px;padding:16px;margin-top:8px;}
+  .bank-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .bank-row:last-child{border-bottom:none;}
+  .bank-row .copy{font-size:12px;color:var(--teal);cursor:pointer;}
+  .total-line{
+    display:flex;justify-content:space-between;align-items:center;margin-top:20px;
+    padding-top:16px;border-top:1px solid var(--line);
+  }
+  .total-line .amt{font-size:22px;font-family:Georgia,serif;color:var(--teal);}
+  #submitBtn{width:100%;margin-top:20px;}
+  .status-msg{margin-top:14px;font-size:13px;color:var(--text-dim);display:none;}
+
+  /* TERMS SECTION */
+  .terms-list{list-style:none;counter-reset:t;}
+  .terms-list li{
+    counter-increment:t;padding:14px 0 14px 40px;position:relative;border-top:1px solid var(--line);
+    color:var(--text-dim);font-size:14px;
+  }
+  .terms-list li:before{
+    content:counter(t,decimal-leading-zero);position:absolute;left:0;top:14px;
+    color:var(--teal);font-family:Georgia,serif;font-size:14px;
+  }
+
+  /* ---------- SIDEBAR DASHBOARD LAYOUT ---------- */
+  .app-shell{display:flex;min-height:100vh;}
+  .sidebar{
+    width:236px;flex-shrink:0;background:var(--bg-soft);border-right:1px solid var(--line);
+    padding:24px 18px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
+  }
+  .sidebar .logo{margin-bottom:28px;padding-left:4px;}
+  .side-nav{display:flex;flex-direction:column;gap:4px;}
+  .side-link{
+    display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;
+    color:var(--text-dim);font-size:14px;font-weight:600;cursor:pointer;
+  }
+  .side-link:hover{background:var(--card);color:var(--text);}
+  .side-link.active{background:linear-gradient(90deg,rgba(0,217,163,0.16),rgba(0,217,163,0.02));color:var(--teal);}
+  .side-link .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:0.7;}
+  .sidebar-footer{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--text-dim);}
+  .sidebar-footer a{color:var(--teal);}
+  .main-area{flex:1;min-width:0;}
+  @media (max-width:900px){
+    .app-shell{flex-direction:column;}
+    .sidebar{width:100%;height:auto;position:relative;flex-direction:row;align-items:center;
+      overflow-x:auto;padding:14px 16px;gap:20px;}
+    .sidebar .logo{margin-bottom:0;}
+    .side-nav{flex-direction:row;}
+    .sidebar-footer{display:none;}
+  }
+
+  /* Stat cards row (dashboard top) */
+  .stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:28px 0;}
+  .stat-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;
+    position:relative;overflow:hidden;
+  }
+  .stat-card .dot-live{position:absolute;top:18px;right:18px;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+  .stat-card .stat-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .stat-card .stat-label{font-size:13px;color:var(--text-dim);}
+  .stat-card .stat-value{font-family:Georgia,serif;font-size:22px;margin-top:2px;}
+
+  /* Service icon grid (dashboard style) */
+  .service-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+  .service-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;
+    cursor:pointer;transition:transform .15s ease,border-color .15s;text-align:center;
+  }
+  .service-card:hover{transform:translateY(-3px);border-color:var(--teal);}
+  .service-card.selected{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal);}
+  .service-card .s-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .service-card .s-icon svg{width:26px;height:26px;}
+  .service-card .s-name{font-size:14px;font-weight:600;}
+  .service-card .s-tag{font-size:11px;color:var(--text-dim);}
+  .dashboard-header{margin-bottom:22px;}
+  .dashboard-header h1{font-size:26px;}
+  .dashboard-header p{color:var(--text-dim);font-size:14px;margin-top:4px;}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;color:var(--text-dim);font-size:13px;}
+
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(10,11,14,0.82);backdrop-filter:blur(4px);
+    display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;
+  }
+  .modal{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;max-width:520px;width:100%;
+    padding:32px;max-height:80vh;overflow-y:auto;
+  }
+  .modal h2{font-size:22px;margin-bottom:6px;}
+  .modal .eyebrow{margin-bottom:14px;}
+  .modal p{color:var(--text-dim);font-size:14px;margin-bottom:10px;}
+  .modal ul{margin:12px 0 12px 18px;color:var(--text-dim);font-size:14px;}
+  .modal ul li{margin-bottom:8px;}
+  .modal-actions{margin-top:22px;display:flex;justify-content:flex-end;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- FIRST VISIT MODAL -->
+<div class="modal-overlay" id="rulesModal">
+  <div class="modal">
+    <span class="eyebrow">Эхлээд уншина уу</span>
+    <h2>Дүрэм & Үйлчилгээний нөхцөл</h2>
+    <p>socialon.com үйлчилгээг ашиглахын өмнө доорх нөхцөлтэй танилцаж, зөвшөөрнө үү.</p>
+    <ul>
+      <li>Манай сайт нь гадаад bot ашиглан дагагч/үзэлт нэмдэг тул хуудасны хандалт (жинхэнэ views) нэмэгдэхгүй болно — зөвхөн тоо л нэмэгдэнэ.</li>
+      <li>Худалдан авалт хийсний дараа <strong>буцаалт хийгдэхгүй</strong>.</li>
+      <li>Нэмэгдсэн дагагч/үзэлт цаг хугацааны явцад хасагдах магадлалтай — энэ нь платформын bot илрүүлэх системээс шалтгаална.</li>
+      <li>Захиалга баталгаажихад дансны шилжүүлэг хийгдсэний дараа 24 цаг хүртэл хугацаа шаардагдана.</li>
+      <li>Буруу эсвэл хаалттай профайл линк өгсөн тохиолдолд захиалга биелэгдэхгүй байж болно — линкээ нягтлана уу.</li>
+    </ul>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="agreeBtn">Ойлголоо, зөвшөөрч байна</button>
+    </div>
+  </div>
+</div>
+
+<!-- QPAY PAYMENT MODAL -->
+<div class="modal-overlay hidden" id="qpayModal">
+  <div class="modal" style="text-align:center;max-width:380px;">
+    <span class="eyebrow">QPay төлбөр</span>
+    <h2 style="margin-bottom:10px;">QR код уншуулж төлнө үү</h2>
+    <div id="qpayQrWrap" style="background:#fff;padding:12px;border-radius:12px;display:inline-block;margin:10px 0;">
+      <img id="qpayQrImg" src="" alt="QPay QR" style="width:220px;height:220px;display:block;">
+    </div>
+    <p style="color:var(--text-dim);font-size:13px;">Утасныхаа банкны апп-аар QR кодыг уншуулж төлбөрөө хийнэ үү.</p>
+    <p id="qpayStatusText" style="margin-top:14px;font-size:14px;color:var(--teal);">⏳ Төлбөр хүлээж байна...</p>
+    <button class="btn btn-ghost" id="qpayCancelBtn" style="margin-top:10px;">Цуцлах</button>
+  </div>
+</div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo">social<span>on</span>.com</div>
+    <nav class="side-nav">
+      <a class="side-link active" href="#dashboard"><span class="dot"></span>Захиалга өгөх</a>
+      <a class="side-link" href="#pricing"><span class="dot"></span>Үнэ</a>
+      <a class="side-link" href="#order"><span class="dot"></span>Захиалгын мэдээлэл</a>
+      <a class="side-link" href="#terms"><span class="dot"></span>Нөхцөл</a>
+    </nav>
+    <div class="sidebar-footer">
+      Холбоо барих<br><a href="mailto:monhoopersi@gmail.com">monhoopersi@gmail.com</a>
+      <button class="g-signin" id="googleBtn" style="width:100%;justify-content:center;margin-top:12px;">Google-ээр нэвтрэх</button>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <section class="hero" id="dashboard">
+      <div class="float-icons">
+        <div class="float-icon fi-fb">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2V5.5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.8c0-.66.34-1.2 1-1.2z" fill="#fff"/></svg>
+        </div>
+        <div class="float-icon fi-ig">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.6"/><circle cx="16.6" cy="7.4" r="1" fill="#fff"/></svg>
+        </div>
+        <div class="float-icon fi-tt">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.6a2.6 2.6 0 1 1-2-2.53V9.5a4.6 4.6 0 1 0 4 4.56V9.8a5.6 5.6 0 0 0 3.4 1.16V8.9A3.6 3.6 0 0 1 16 5.4V4h-2z" fill="#fff"/></svg>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="dashboard-header">
+          <h1>Захиалга өгөх</h1>
+          <p>Платформоо сонгоод, доор багц болон захиалгын мэдээллээ бөглөнө үү.</p>
+        </div>
+
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(0,217,163,0.14);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-5Z" stroke="#00D9A3" stroke-width="1.6"/></svg></div>
+            <div class="stat-label">Дэмждэг платформ</div>
+            <div class="stat-value">3</div>
+          </div>
+          <div class="stat-card">
+            <div class="dot-live"></div>
+            <div class="stat-icon" style="background:rgba(76,141,255,0.14);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="#4C8DFF" stroke-width="1.6"/></svg></div>
+            <div class="stat-label">Хамгийн бага үнэ</div>
+            <div class="stat-value">10,000₮</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(255,84,112,0.14);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FF5470" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="#FF5470" stroke-width="1.6"/></svg></div>
+            <div class="stat-label">Биелэх хугацаа</div>
+            <div class="stat-value">24ц дотор</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(37,244,238,0.14);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 6h16M4 18h10" stroke="#25F4EE" stroke-width="1.6"/></svg></div>
+            <div class="stat-label">Үйлчилгээний төрөл</div>
+            <div class="stat-value">Дагагч + Үзэлт</div>
+          </div>
+        </div>
+
+        <div class="service-grid" id="serviceGrid">
+          <div class="service-card" data-platform="Facebook" data-type="followers">
+            <div class="s-icon" style="background:linear-gradient(145deg,#5B93FF,#3866C9);"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2V5.5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.8c0-.66.34-1.2 1-1.2z" fill="#fff"/></svg></div>
+            <div class="s-name">Facebook</div>
+            <div class="s-tag">Дагагч</div>
+          </div>
+          <div class="service-card" data-platform="Instagram" data-type="followers">
+            <div class="s-icon" style="background:linear-gradient(145deg,#FF7A59,#C13584,#5851DB);"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="3.4" stroke="#fff" stroke-width="1.6"/><circle cx="16.6" cy="7.4" r="1" fill="#fff"/></svg></div>
+            <div class="s-name">Instagram</div>
+            <div class="s-tag">Дагагч</div>
+          </div>
+          <div class="service-card" data-platform="TikTok" data-type="followers">
+            <div class="s-icon" style="background:linear-gradient(145deg,#25F4EE,#161823);"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.6a2.6 2.6 0 1 1-2-2.53V9.5a4.6 4.6 0 1 0 4 4.56V9.8a5.6 5.6 0 0 0 3.4 1.16V8.9A3.6 3.6 0 0 1 16 5.4V4h-2z" fill="#fff"/></svg></div>
+            <div class="s-name">TikTok</div>
+            <div class="s-tag">Дагагч</div>
+          </div>
+          <div class="service-card" data-platform="Instagram Reels" data-type="views">
+            <div class="s-icon" style="background:linear-gradient(145deg,#FF7A59,#C13584,#5851DB);"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6v12l10-6L8 6Z" fill="#fff"/></svg></div>
+            <div class="s-name">Instagram Reels</div>
+            <div class="s-tag">Үзэлт</div>
+          </div>
+          <div class="service-card" data-platform="Facebook" data-type="views">
+            <div class="s-icon" style="background:linear-gradient(145deg,#5B93FF,#3866C9);"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6v12l10-6L8 6Z" fill="#fff"/></svg></div>
+            <div class="s-name">Facebook</div>
+            <div class="s-tag">Үзэлт</div>
+          </div>
+          <div class="service-card" data-platform="TikTok" data-type="views">
+            <div class="s-icon" style="background:linear-gradient(145deg,#25F4EE,#161823);"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6v12l10-6L8 6Z" fill="#fff"/></svg></div>
+            <div class="s-name">TikTok</div>
+            <div class="s-tag">Үзэлт</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Үнийн жагсаалт</span>
+      <h2>Үйлчилгээ, платформ, багц сонгоно уу</h2>
+      <p>Эхлээд төрлөө (Дагагч/Үзэлт), дараа нь платформоо сонгоод, багц дээр дарахад захиалгын форм автоматаар бөглөгдөнө.</p>
+    </div>
+    <div class="tabs type-tabs" id="typeTabs">
+      <div class="tab active" data-type="followers">Дагагч</div>
+      <div class="tab" data-type="views">Үзэлт</div>
+    </div>
+    <div class="tabs" id="platformTabs"></div>
+    <div class="price-grid" id="priceGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="order">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Захиалга</span>
+      <h2>Мэдээллээ бөглөнө үү</h2>
+      <p>Дансаар шилжүүлэг хийсний дараа доорх формыг бөглөж илгээнэ үү.</p>
+    </div>
+    <div class="order-grid">
+      <div class="card">
+        <h3>Захиалгын мэдээлэл</h3>
+        <label>Үйлчилгээний төрөл</label>
+        <select id="fType">
+          <option value="followers">Дагагч</option>
+          <option value="views">Үзэлт</option>
+        </select>
+
+        <label>Платформ</label>
+        <select id="fPlatform"></select>
+
+        <label>Багц</label>
+        <select id="fPackage"></select>
+
+        <label>Профайл/пост/видео линк</label>
+        <input type="url" id="fLink" placeholder="https://facebook.com/tanii.profile" required>
+
+        <label>Холбоо барих имэйл эсвэл утас</label>
+        <input type="text" id="fContact" placeholder="99001122 эсвэл имэйл хаяг" required>
+
+        <label>Төлбөрийн хэлбэр</label>
+        <select id="fPayMethod">
+          <option value="qpay">QPay — автомат, шууд баталгаажна</option>
+          <option value="manual">Дансаар шилжүүлэх (гараар шалгагдана)</option>
+        </select>
+
+        <div class="checkbox-row" id="manualPaidRow">
+          <input type="checkbox" id="fPaid">
+          <label style="margin:0;color:var(--text-dim);">Дансаар шилжүүлэг хийсэн бөгөөд <a href="#terms">үйлчилгээний нөхцөлийг</a> зөвшөөрч байна.</label>
+        </div>
+        <div class="checkbox-row" id="qpayTermsRow" style="display:none;">
+          <input type="checkbox" id="fAgreeQpay">
+          <label style="margin:0;color:var(--text-dim);"><a href="#terms">Үйлчилгээний нөхцөлийг</a> зөвшөөрч байна.</label>
+        </div>
+
+        <button class="btn btn-primary" id="submitBtn">Захиалга илгээх</button>
+        <div class="status-msg" id="statusMsg"></div>
+      </div>
+
+      <div class="card">
+        <h3>Дансны мэдээлэл</h3>
+        <div class="bank-box">
+          <div class="bank-row">
+            <span>Банк</span>
+            <span style="display:flex;align-items:center;gap:8px;">
+              <span style="display:inline-flex;align-items:center;gap:6px;background:#0B3B2E;border:1px solid #1B6A4E;border-radius:6px;padding:3px 9px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 18V9l8-5 8 5v9" stroke="#3DDC97" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 18h16M8 18v-6h8v6" stroke="#3DDC97" stroke-width="1.8"/></svg>
+                <b style="color:#3DDC97;font-size:13px;letter-spacing:0.02em;">M Bank</b>
+              </span>
+            </span>
+          </div>
+          <div class="bank-row">
+            <span>Данс эзэмшигч</span><span>Нүүдэл Үнэнбуян</span>
+          </div>
+          <div class="bank-row">
+            <span>Дансны дугаар</span>
+            <span style="display:flex;align-items:center;gap:8px;">8011956280 <span class="copy" data-copy="8011956280">Хуулах</span></span>
+          </div>
+          <div class="bank-row">
+            <span>IBAN</span>
+            <span style="display:flex;align-items:center;gap:8px;">060039008011956280 <span class="copy" data-copy="060039008011956280">Хуулах</span></span>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--text-dim);margin-top:10px;line-height:1.5;">
+          ⚠️ Шилжүүлэг хийхдээ <strong style="color:var(--text);">гүйлгээний утга</strong>-д холбогдох утасны дугаараа заавал бичнэ үү — энэ нь захиалгыг таны төлбөртэй хурдан тулгаж баталгаажуулахад тусална.
+        </p>
+        <div class="total-line">
+          <span style="color:var(--text-dim);font-size:13px;">Нийт төлөх дүн</span>
+          <span class="amt" id="totalAmt">10,000₮</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="terms">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Заавал уншина уу</span>
+      <h2>Үйлчилгээний нөхцөл</h2>
+    </div>
+    <ul class="terms-list">
+      <li>Манай сайт гадаад bot ашиглан дагагч/үзэлт нэмдэг тул хуудасны хандалт (жинхэнэ views) нэмэгдэхгүй, зөвхөн тоо л нэмэгдэнэ.</li>
+      <li>Худалдан авалт хийсний дараа буцаалт хийгдэхгүй.</li>
+      <li>Нэмэгдсэн дагагч/үзэлт цаг хугацааны явцад хасагдах магадлалтай.</li>
+      <li>Дансны шилжүүлгийн баримт зөрчилтэй бол захиалга биелэгдэхгүй.</li>
+      <li>Профайл/пост нээлттэй (public) байх шаардлагатай, эс тэгвээс тоо нэмэгдэхгүй байж болно.</li>
+    </ul>
+  </div>
+</section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© socialon.com — Дагагч & Үзэлт нэмэгдүүлэх үйлчилгээ</span>
+    <span>Холбоо барих: monhoopersi@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+// ---------- DATA ----------
+const FOLLOWER_FB = [
+  {n:1000, p:10000}, {n:2000, p:20000}, {n:3000, p:30000},
+  {n:5000, p:45000}, {n:7000, p:65000}, {n:10000, p:70000}, {n:20000, p:140000}
+];
+const FOLLOWER_IG = [
+  {n:1000, p:15000}, {n:2000, p:25000}, {n:3000, p:35000},
+  {n:5000, p:47000}, {n:7000, p:69000}, {n:10000, p:77000}, {n:20000, p:145000}
+];
+// TikTok followers priced same as Instagram
+const FOLLOWER_TT = FOLLOWER_IG;
+
+// Views pricing — identical across Facebook / Instagram Reels / TikTok
+const VIEW_TIERS = [
+  {n:1000, p:10000}, {n:2000, p:20000}, {n:3000, p:27000},
+  {n:4000, p:35000}, {n:10000, p:85000}, {n:100000, p:550000}
+];
+
+const SERVICE = {
+  followers: {
+    label: 'Дагагч',
+    platforms: {
+      'Facebook': FOLLOWER_FB,
+      'Instagram': FOLLOWER_IG,
+      'TikTok': FOLLOWER_TT
+    }
+  },
+  views: {
+    label: 'Үзэлт',
+    platforms: {
+      'Facebook': VIEW_TIERS,
+      'Instagram Reels': VIEW_TIERS,
+      'TikTok': VIEW_TIERS
+    }
+  }
+};
+
+const DEST_EMAIL = "monhoopersi@gmail.com";
+
+// ---------- EMAILJS CONFIG ----------
+const EMAILJS_PUBLIC_KEY  = "rxN46XWpCjWnBn6d_";
+const EMAILJS_SERVICE_ID  = "service_3zushqd";
+const EMAILJS_TEMPLATE_ID = "template_uoc19pc";
+if (window.emailjs) {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+}
+
+let currentType = "followers";
+let currentPlatform = "Facebook";
+
+function fmt(n){ return n.toLocaleString('mn-MN') + '₮'; }
+function unitLabel(type){ return type === 'views' ? 'үзэлт' : 'дагагч'; }
+
+const PLATFORM_ICONS = {
+  'Facebook': '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#4C8DFF"/><path d="M15 8.5h2V5.5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.8c0-.66.34-1.2 1-1.2z" fill="#fff"/></svg>',
+  'Instagram': '<svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGrad)"/><rect x="7" y="7" width="10" height="10" rx="3.4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" stroke="#fff" stroke-width="1.5"/><circle cx="16" cy="8" r="0.9" fill="#fff"/><defs><linearGradient id="igGrad" x1="0" y1="24" x2="24" y2="0"><stop offset="0" stop-color="#FFB84C"/><stop offset="0.5" stop-color="#FF5470"/><stop offset="1" stop-color="#5851DB"/></linearGradient></defs></svg>',
+  'Instagram Reels': '<svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGrad2)"/><rect x="7" y="7" width="10" height="10" rx="3.4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" stroke="#fff" stroke-width="1.5"/><circle cx="16" cy="8" r="0.9" fill="#fff"/><defs><linearGradient id="igGrad2" x1="0" y1="24" x2="24" y2="0"><stop offset="0" stop-color="#FFB84C"/><stop offset="0.5" stop-color="#FF5470"/><stop offset="1" stop-color="#5851DB"/></linearGradient></defs></svg>',
+  'TikTok': '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#111"/><path d="M14 6v9.6a2.6 2.6 0 1 1-2-2.53V11.5a4.6 4.6 0 1 0 4 4.56V11.8a5.6 5.6 0 0 0 3.4 1.16V10.9A3.6 3.6 0 0 1 16 7.4V6h-2z" fill="#25F4EE"/></svg>'
+};
+
+// ---------- PLATFORM TABS ----------
+function renderPlatformTabs(){
+  const wrap = document.getElementById('platformTabs');
+  wrap.innerHTML = '';
+  const platforms = Object.keys(SERVICE[currentType].platforms);
+  if(!platforms.includes(currentPlatform)) currentPlatform = platforms[0];
+  platforms.forEach(pf=>{
+    const tab = document.createElement('div');
+    tab.className = 'tab' + (pf === currentPlatform ? ' active' : '');
+    tab.dataset.platform = pf;
+    tab.innerHTML = `<span class="platform-icon">${PLATFORM_ICONS[pf] || ''}</span>${pf}`;
+    tab.addEventListener('click', ()=>{
+      currentPlatform = pf;
+      renderPlatformTabs();
+      renderGrid();
+    });
+    wrap.appendChild(tab);
+  });
+}
+
+// ---------- DASHBOARD SERVICE CARDS ----------
+document.querySelectorAll('.service-card').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
+    card.classList.add('selected');
+    const type = card.dataset.type;
+    const platform = card.dataset.platform;
+    document.getElementById('fType').value = type;
+    populatePlatformSelect();
+    document.getElementById('fPlatform').value = platform;
+    populatePackageSelect();
+    updateTotal();
+    document.getElementById('order').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// ---------- 3D TILT ON PRICE CARDS ----------
+function attachTilt(card){
+  const strength = 10;
+  card.addEventListener('mousemove', (e)=>{
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(700px) rotateX(${(-y*strength).toFixed(2)}deg) rotateY(${(x*strength).toFixed(2)}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', ()=>{
+    card.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) translateY(0)';
+  });
+}
+
+// ---------- PRICING GRID ----------
+function renderGrid(){
+  const grid = document.getElementById('priceGrid');
+  grid.innerHTML = '';
+  const tiers = SERVICE[currentType].platforms[currentPlatform];
+  const unit = unitLabel(currentType);
+  tiers.forEach(item=>{
+    const card = document.createElement('div');
+    card.className = 'price-card';
+    card.innerHTML = `<div class="num">${item.n.toLocaleString('mn-MN')}</div>
+                       <div class="lbl">${unit}</div>
+                       <div class="amt">${fmt(item.p)}</div>`;
+    card.addEventListener('click', ()=>{
+      document.getElementById('fType').value = currentType;
+      populatePlatformSelect();
+      document.getElementById('fPlatform').value = currentPlatform;
+      populatePackageSelect();
+      document.getElementById('fPackage').value = item.n;
+      updateTotal();
+      document.getElementById('order').scrollIntoView({behavior:'smooth'});
+    });
+    grid.appendChild(card);
+    attachTilt(card);
+  });
+}
+
+document.getElementById('typeTabs').addEventListener('click', (e)=>{
+  const tab = e.target.closest('.tab');
+  if(!tab) return;
+  document.querySelectorAll('#typeTabs .tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  currentType = tab.dataset.type;
+  renderPlatformTabs();
+  renderGrid();
+});
+
+// ---------- ORDER FORM ----------
+function populatePlatformSelect(){
+  const type = document.getElementById('fType').value;
+  const sel = document.getElementById('fPlatform');
+  sel.innerHTML = '';
+  Object.keys(SERVICE[type].platforms).forEach(pf=>{
+    const opt = document.createElement('option');
+    opt.value = pf;
+    opt.textContent = pf;
+    sel.appendChild(opt);
+  });
+}
+function populatePackageSelect(){
+  const type = document.getElementById('fType').value;
+  const platform = document.getElementById('fPlatform').value;
+  const sel = document.getElementById('fPackage');
+  sel.innerHTML = '';
+  const unit = unitLabel(type);
+  SERVICE[type].platforms[platform].forEach(item=>{
+    const opt = document.createElement('option');
+    opt.value = item.n;
+    opt.textContent = `${item.n.toLocaleString('mn-MN')} ${unit} — ${fmt(item.p)}`;
+    sel.appendChild(opt);
+  });
+  updateTotal();
+}
+function updateTotal(){
+  const type = document.getElementById('fType').value;
+  const platform = document.getElementById('fPlatform').value;
+  const n = parseInt(document.getElementById('fPackage').value);
+  const item = SERVICE[type].platforms[platform].find(i=>i.n===n);
+  document.getElementById('totalAmt').textContent = item ? fmt(item.p) : '';
+}
+document.getElementById('fType').addEventListener('change', ()=>{
+  populatePlatformSelect();
+  populatePackageSelect();
+});
+document.getElementById('fPlatform').addEventListener('change', populatePackageSelect);
+document.getElementById('fPackage').addEventListener('change', updateTotal);
+
+// copy buttons
+document.querySelectorAll('.copy').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    navigator.clipboard.writeText(el.dataset.copy);
+    const orig = el.textContent;
+    el.textContent = 'Хуулсан ✓';
+    setTimeout(()=>el.textContent = orig, 1500);
+  });
+});
+
+// ---------- PAYMENT METHOD TOGGLE ----------
+const payMethodSelect = document.getElementById('fPayMethod');
+const manualPaidRow = document.getElementById('manualPaidRow');
+const qpayTermsRow = document.getElementById('qpayTermsRow');
+function syncPayMethodUI(){
+  const isQpay = payMethodSelect.value === 'qpay';
+  manualPaidRow.style.display = isQpay ? 'none' : 'flex';
+  qpayTermsRow.style.display = isQpay ? 'flex' : 'none';
+}
+payMethodSelect.addEventListener('change', syncPayMethodUI);
+syncPayMethodUI();
+
+// ---------- SEND ORDER EMAIL (shared by both payment paths) ----------
+function sendOrderEmail({type, platform, amountQty, priceStr, link, contact, paymentNote}){
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  const fallbackToMailto = () => {
+    const subject = encodeURIComponent(`Шинэ захиалга — ${platform} ${amountQty}`);
+    const body = encodeURIComponent(
+`Төрөл: ${SERVICE[type].label}
+Платформ: ${platform}
+Тоо: ${amountQty}
+Үнэ: ${priceStr}
+Профайл/пост линк: ${link}
+Холбоо барих: ${contact}
+Төлбөр: ${paymentNote}`);
+    window.location.href = `mailto:${DEST_EMAIL}?subject=${subject}&body=${body}`;
+    statusMsg.style.display='block';
+    statusMsg.style.color = 'var(--teal)';
+    statusMsg.textContent = 'Имэйл клиент нээгдэж байна. Илгээгдэхгүй бол ' + DEST_EMAIL + ' руу гараар мэдээллээ бичиж явуулна уу.';
+  };
+
+  if (!window.emailjs) { fallbackToMailto(); return; }
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    service_type: SERVICE[type].label,
+    platform: platform,
+    amount_qty: amountQty,
+    price: priceStr,
+    profile_link: link,
+    contact: contact
+  }).then(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Захиалга илгээх';
+    statusMsg.style.display='block';
+    statusMsg.style.color = 'var(--teal)';
+    statusMsg.textContent = 'Захиалга амжилттай илгээгдлээ! Бид удахгүй холбогдох болно.';
+  }).catch((err) => {
+    console.error('EmailJS error:', err);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Захиалга илгээх';
+    statusMsg.style.display='block';
+    statusMsg.style.color = 'var(--coral)';
+    statusMsg.textContent = 'Автомат илгээхэд алдаа гарлаа, имэйл апп нээгдэж байна...';
+    fallbackToMailto();
+  });
+}
+
+// ---------- QPAY FLOW ----------
+let qpayPollTimer = null;
+function stopQpayPolling(){
+  if (qpayPollTimer) { clearInterval(qpayPollTimer); qpayPollTimer = null; }
+}
+function closeQpayModal(){
+  stopQpayPolling();
+  document.getElementById('qpayModal').classList.add('hidden');
+}
+document.getElementById('qpayCancelBtn').addEventListener('click', closeQpayModal);
+
+async function startQpayPayment(orderInfo){
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+  const qpayModal = document.getElementById('qpayModal');
+  const qpayStatusText = document.getElementById('qpayStatusText');
+  const qpayQrImg = document.getElementById('qpayQrImg');
+
+  try {
+    const resp = await fetch('/api/qpay-invoice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: orderInfo.priceNumber,
+        description: `${orderInfo.platform} ${orderInfo.amountQty} - socialon.online`
+      })
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'QPay invoice үүсгэхэд алдаа гарлаа');
+
+    qpayQrImg.src = `data:image/png;base64,${data.qr_image}`;
+    qpayStatusText.textContent = '⏳ Төлбөр хүлээж байна...';
+    qpayStatusText.style.color = 'var(--teal)';
+    qpayModal.classList.remove('hidden');
+
+    let elapsed = 0;
+    const maxWaitMs = 5 * 60 * 1000; // 5 минут
+    qpayPollTimer = setInterval(async () => {
+      elapsed += 3000;
+      try {
+        const checkResp = await fetch('/api/qpay-check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ invoice_id: data.invoice_id })
+        });
+        const checkData = await checkResp.json();
+        if (checkData.paid) {
+          stopQpayPolling();
+          qpayStatusText.textContent = '✅ Төлбөр амжилттай хийгдлээ!';
+          qpayStatusText.style.color = 'var(--teal)';
+          setTimeout(() => {
+            qpayModal.classList.add('hidden');
+            sendOrderEmail({ ...orderInfo, paymentNote: 'QPay-ээр баталгаажсан ✅' });
+          }, 1200);
+        } else if (elapsed >= maxWaitMs) {
+          stopQpayPolling();
+          qpayStatusText.textContent = 'Хугацаа дууслаа. Дахин оролдоно уу.';
+          qpayStatusText.style.color = 'var(--coral)';
+        }
+      } catch (e) {
+        console.error('QPay check error:', e);
+      }
+    }, 3000);
+
+  } catch (err) {
+    console.error('QPay error:', err);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Захиалга илгээх';
+    statusMsg.style.display = 'block';
+    statusMsg.style.color = 'var(--coral)';
+    statusMsg.textContent = 'QPay холболтод алдаа гарлаа: ' + err.message;
+  }
+}
+
+// ---------- MAIN SUBMIT ----------
+document.getElementById('submitBtn').addEventListener('click', ()=>{
+  const type = document.getElementById('fType').value;
+  const platform = document.getElementById('fPlatform').value;
+  const n = document.getElementById('fPackage').value;
+  const link = document.getElementById('fLink').value.trim();
+  const contact = document.getElementById('fContact').value.trim();
+  const payMethod = document.getElementById('fPayMethod').value;
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if(!link || !contact){
+    statusMsg.style.display='block';
+    statusMsg.style.color = 'var(--coral)';
+    statusMsg.textContent = 'Профайл линк болон холбоо барих мэдээллээ бөглөнө үү.';
+    return;
+  }
+
+  if (payMethod === 'manual' && !document.getElementById('fPaid').checked){
+    statusMsg.style.display='block';
+    statusMsg.style.color = 'var(--coral)';
+    statusMsg.textContent = 'Дансны шилжүүлэг хийсэн эсэхээ баталгаажуулж, нөхцөлийг зөвшөөрнө үү.';
+    return;
+  }
+  if (payMethod === 'qpay' && !document.getElementById('fAgreeQpay').checked){
+    statusMsg.style.display='block';
+    statusMsg.style.color = 'var(--coral)';
+    statusMsg.textContent = 'Үйлчилгээний нөхцөлийг зөвшөөрнө үү.';
+    return;
+  }
+
+  const item = SERVICE[type].platforms[platform].find(i=>i.n===parseInt(n));
+  const unit = unitLabel(type);
+  const amountQty = `${Number(n).toLocaleString('mn-MN')} ${unit}`;
+  const priceStr = item ? fmt(item.p) : '';
+  const priceNumber = item ? item.p : 0;
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = payMethod === 'qpay' ? 'QR бэлдэж байна...' : 'Илгээж байна...';
+  statusMsg.style.display='block';
+  statusMsg.style.color = 'var(--text-dim)';
+  statusMsg.textContent = payMethod === 'qpay' ? 'QPay нэхэмжлэх бэлдэж байна...' : 'Захиалга илгээж байна...';
+
+  const orderInfo = { type, platform, amountQty, priceStr, priceNumber, link, contact };
+
+  if (payMethod === 'qpay') {
+    startQpayPayment(orderInfo);
+  } else {
+    sendOrderEmail({ ...orderInfo, paymentNote: 'Дансаар шилжүүлсэн (гараар шалгагдана)' });
+  }
+});
+
+
+// ---------- TERMS MODAL (session-only, no localStorage) ----------
+document.getElementById('agreeBtn').addEventListener('click', ()=>{
+  document.getElementById('rulesModal').classList.add('hidden');
+});
+
+// ---------- GOOGLE SIGN-IN PLACEHOLDER ----------
+document.getElementById('googleBtn').addEventListener('click', ()=>{
+  alert('Google нэвтрэлтийг идэвхжүүлэхийн тулд сайтаа домэйнтэй болгож, Google Cloud Console-оос Client ID авах шаардлагатай. Одоогоор энэ товч жишээ байдлаар байна.');
+});
+
+// init
+populatePlatformSelect();
+populatePackageSelect();
+renderPlatformTabs();
+renderGrid();
+</script>
+</body>
+</html>
