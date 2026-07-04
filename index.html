@@ -1,4 +1,3 @@
-· HTML
 <!DOCTYPE html>
 <html lang="mn">
 <head>
@@ -36,7 +35,7 @@
   }
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
- 
+
   /* NAV */
   nav{
     position:sticky;top:0;z-index:50;
@@ -55,7 +54,7 @@
     padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;
     border:1px solid #dadce0;
   }
- 
+
   /* HERO */
   .hero{padding:88px 0 64px;position:relative;overflow:hidden;}
   .hero:before{
@@ -84,7 +83,7 @@
     .float-icon{animation:none;}
   }
   @media (max-width:820px){ .float-icons{display:none;} }
- 
+
   .platform-icon{display:inline-flex;width:16px;height:16px;vertical-align:-3px;margin-right:6px;}
   .platform-icon svg{width:100%;height:100%;}
   .eyebrow{
@@ -104,19 +103,19 @@
   .btn-primary:hover{filter:brightness(1.08);}
   .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--text);}
   .btn-ghost:hover{border-color:var(--text-dim);}
- 
+
   .stat-row{display:flex;gap:36px;margin-top:56px;flex-wrap:wrap;}
   .stat{border-left:2px solid var(--line);padding-left:14px;}
   .stat b{display:block;font-size:26px;font-family:Georgia,serif;color:var(--text);}
   .stat span{font-size:13px;color:var(--text-dim);}
- 
+
   /* SECTION HEADERS */
   .section{padding:64px 0;border-top:1px solid var(--line);}
   .section-head{margin-bottom:32px;}
   .section-head .eyebrow{margin-bottom:10px;}
   .section-head h2{font-size:30px;}
   .section-head p{color:var(--text-dim);margin-top:8px;max-width:560px;}
- 
+
   /* TABS */
   .tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
   .tab{
@@ -129,7 +128,7 @@
   .tab.active[data-platform="Instagram"]{background:linear-gradient(90deg,var(--ig1),var(--ig2));}
   .tab.active[data-platform="Instagram Reels"]{background:linear-gradient(90deg,var(--ig1),var(--ig2));}
   .tab.active[data-platform="TikTok"]{background:var(--tt);color:#0A0E0C;}
- 
+
   .price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:22px;perspective:800px;}
   .price-card{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
@@ -140,7 +139,7 @@
   .price-card .num{font-family:Georgia,serif;font-size:24px;}
   .price-card .lbl{color:var(--text-dim);font-size:13px;margin-top:2px;}
   .price-card .amt{margin-top:14px;font-size:20px;font-weight:700;color:var(--teal);}
- 
+
   /* ORDER FORM */
   .order-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;}
   @media (max-width:760px){.order-grid{grid-template-columns:1fr;}}
@@ -156,7 +155,7 @@
   .checkbox-row{display:flex;align-items:flex-start;gap:10px;margin-top:18px;font-size:13px;color:var(--text-dim);}
   .checkbox-row input{margin-top:3px;}
   .checkbox-row a{color:var(--teal);text-decoration:underline;}
- 
+
   .bank-box{background:var(--bg-soft);border:1px dashed var(--line);border-radius:10px;padding:16px;margin-top:8px;}
   .bank-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;}
   .bank-row:last-child{border-bottom:none;}
@@ -168,7 +167,7 @@
   .total-line .amt{font-size:22px;font-family:Georgia,serif;color:var(--teal);}
   #submitBtn{width:100%;margin-top:20px;}
   .status-msg{margin-top:14px;font-size:13px;color:var(--text-dim);display:none;}
- 
+
   /* TERMS SECTION */
   .terms-list{list-style:none;counter-reset:t;}
   .terms-list li{
@@ -179,7 +178,7 @@
     content:counter(t,decimal-leading-zero);position:absolute;left:0;top:14px;
     color:var(--teal);font-family:Georgia,serif;font-size:14px;
   }
- 
+
   /* ---------- SIDEBAR DASHBOARD LAYOUT ---------- */
   .app-shell{display:flex;min-height:100vh;}
   .sidebar{
@@ -206,7 +205,7 @@
     .side-nav{flex-direction:row;}
     .sidebar-footer{display:none;}
   }
- 
+
   /* Stat cards row (dashboard top) */
   .stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:28px 0;}
   .stat-card{
@@ -217,7 +216,7 @@
   .stat-card .stat-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
   .stat-card .stat-label{font-size:13px;color:var(--text-dim);}
   .stat-card .stat-value{font-family:Georgia,serif;font-size:22px;margin-top:2px;}
- 
+
   /* Service icon grid (dashboard style) */
   .service-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
   .service-card{
@@ -234,11 +233,11 @@
   .dashboard-header{margin-bottom:22px;}
   .dashboard-header h1{font-size:26px;}
   .dashboard-header p{color:var(--text-dim);font-size:14px;margin-top:4px;}
- 
+
   footer{border-top:1px solid var(--line);padding:32px 0;color:var(--text-dim);font-size:13px;}
- 
+
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
- 
+
   /* MODAL */
   .modal-overlay{
     position:fixed;inset:0;background:rgba(10,11,14,0.82);backdrop-filter:blur(4px);
@@ -260,7 +259,7 @@
 <body>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
- 
+
 <!-- FIRST VISIT MODAL -->
 <div class="modal-overlay" id="rulesModal">
   <div class="modal">
@@ -279,7 +278,7 @@
     </div>
   </div>
 </div>
- 
+
 <!-- QPAY PAYMENT MODAL -->
 <div class="modal-overlay hidden" id="qpayModal">
   <div class="modal" style="text-align:center;max-width:380px;">
@@ -294,7 +293,7 @@
     <button class="btn btn-ghost" id="qpayCancelBtn" style="margin-top:10px;">Цуцлах</button>
   </div>
 </div>
- 
+
 <div class="app-shell">
   <aside class="sidebar">
     <div class="logo">social<span>on</span>.com</div>
@@ -309,7 +308,7 @@
       <button class="g-signin" id="googleBtn" style="width:100%;justify-content:center;margin-top:12px;">Google-ээр нэвтрэх</button>
     </div>
   </aside>
- 
+
   <main class="main-area">
     <section class="hero" id="dashboard">
       <div class="float-icons">
@@ -328,7 +327,7 @@
           <h1>Захиалга өгөх</h1>
           <p>Платформоо сонгоод, доор багц болон захиалгын мэдээллээ бөглөнө үү.</p>
         </div>
- 
+
         <div class="stat-cards">
           <div class="stat-card">
             <div class="stat-icon" style="background:rgba(0,217,163,0.14);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-5Z" stroke="#00D9A3" stroke-width="1.6"/></svg></div>
@@ -352,7 +351,7 @@
             <div class="stat-value">Дагагч + Үзэлт</div>
           </div>
         </div>
- 
+
         <div class="service-grid" id="serviceGrid">
           <div class="service-card" data-platform="Facebook" data-type="followers">
             <div class="s-icon" style="background:linear-gradient(145deg,#5B93FF,#3866C9);"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2V5.5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.8c0-.66.34-1.2 1-1.2z" fill="#fff"/></svg></div>
@@ -387,7 +386,7 @@
         </div>
       </div>
     </section>
- 
+
 <section class="section" id="pricing">
   <div class="wrap">
     <div class="section-head">
@@ -403,7 +402,7 @@
     <div class="price-grid" id="priceGrid"></div>
   </div>
 </section>
- 
+
 <section class="section" id="order">
   <div class="wrap">
     <div class="section-head">
@@ -419,25 +418,25 @@
           <option value="followers">Дагагч</option>
           <option value="views">Үзэлт</option>
         </select>
- 
+
         <label>Платформ</label>
         <select id="fPlatform"></select>
- 
+
         <label>Багц</label>
         <select id="fPackage"></select>
- 
+
         <label>Профайл/пост/видео линк</label>
         <input type="url" id="fLink" placeholder="https://facebook.com/tanii.profile" required>
- 
+
         <label>Холбоо барих имэйл эсвэл утас</label>
         <input type="text" id="fContact" placeholder="99001122 эсвэл имэйл хаяг" required>
- 
+
         <label>Төлбөрийн хэлбэр</label>
         <select id="fPayMethod">
           <option value="qpay">QPay — автомат, шууд баталгаажна</option>
           <option value="manual">Дансаар шилжүүлэх (гараар шалгагдана)</option>
         </select>
- 
+
         <div class="checkbox-row" id="manualPaidRow">
           <input type="checkbox" id="fPaid">
           <label style="margin:0;color:var(--text-dim);">Дансаар шилжүүлэг хийсэн бөгөөд <a href="#terms">үйлчилгээний нөхцөлийг</a> зөвшөөрч байна.</label>
@@ -446,11 +445,11 @@
           <input type="checkbox" id="fAgreeQpay">
           <label style="margin:0;color:var(--text-dim);"><a href="#terms">Үйлчилгээний нөхцөлийг</a> зөвшөөрч байна.</label>
         </div>
- 
+
         <button class="btn btn-primary" id="submitBtn">Захиалга илгээх</button>
         <div class="status-msg" id="statusMsg"></div>
       </div>
- 
+
       <div class="card">
         <h3>Дансны мэдээлэл</h3>
         <div class="bank-box">
@@ -486,7 +485,7 @@
     </div>
   </div>
 </section>
- 
+
 <section class="section" id="terms">
   <div class="wrap">
     <div class="section-head">
@@ -504,14 +503,14 @@
 </section>
   </main>
 </div>
- 
+
 <footer>
   <div class="wrap">
     <span>© socialon.com — Дагагч & Үзэлт нэмэгдүүлэх үйлчилгээ</span>
     <span>Холбоо барих: monhoopersi@gmail.com</span>
   </div>
 </footer>
- 
+
 <script>
 // ---------- DATA ----------
 const FOLLOWER_FB = [
@@ -524,13 +523,13 @@ const FOLLOWER_IG = [
 ];
 // TikTok followers priced same as Instagram
 const FOLLOWER_TT = FOLLOWER_IG;
- 
+
 // Views pricing — identical across Facebook / Instagram Reels / TikTok
 const VIEW_TIERS = [
   {n:1000, p:10000}, {n:2000, p:20000}, {n:3000, p:27000},
   {n:4000, p:35000}, {n:10000, p:85000}, {n:100000, p:550000}
 ];
- 
+
 const SERVICE = {
   followers: {
     label: 'Дагагч',
@@ -549,9 +548,9 @@ const SERVICE = {
     }
   }
 };
- 
+
 const DEST_EMAIL = "monhoopersi@gmail.com";
- 
+
 // ---------- EMAILJS CONFIG ----------
 const EMAILJS_PUBLIC_KEY  = "rxN46XWpCjWnBn6d_";
 const EMAILJS_SERVICE_ID  = "service_3zushqd";
@@ -559,20 +558,20 @@ const EMAILJS_TEMPLATE_ID = "template_uoc19pc";
 if (window.emailjs) {
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 }
- 
+
 let currentType = "followers";
 let currentPlatform = "Facebook";
- 
+
 function fmt(n){ return n.toLocaleString('mn-MN') + '₮'; }
 function unitLabel(type){ return type === 'views' ? 'үзэлт' : 'дагагч'; }
- 
+
 const PLATFORM_ICONS = {
   'Facebook': '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#4C8DFF"/><path d="M15 8.5h2V5.5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.8c0-.66.34-1.2 1-1.2z" fill="#fff"/></svg>',
   'Instagram': '<svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGrad)"/><rect x="7" y="7" width="10" height="10" rx="3.4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" stroke="#fff" stroke-width="1.5"/><circle cx="16" cy="8" r="0.9" fill="#fff"/><defs><linearGradient id="igGrad" x1="0" y1="24" x2="24" y2="0"><stop offset="0" stop-color="#FFB84C"/><stop offset="0.5" stop-color="#FF5470"/><stop offset="1" stop-color="#5851DB"/></linearGradient></defs></svg>',
   'Instagram Reels': '<svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGrad2)"/><rect x="7" y="7" width="10" height="10" rx="3.4" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" stroke="#fff" stroke-width="1.5"/><circle cx="16" cy="8" r="0.9" fill="#fff"/><defs><linearGradient id="igGrad2" x1="0" y1="24" x2="24" y2="0"><stop offset="0" stop-color="#FFB84C"/><stop offset="0.5" stop-color="#FF5470"/><stop offset="1" stop-color="#5851DB"/></linearGradient></defs></svg>',
   'TikTok': '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#111"/><path d="M14 6v9.6a2.6 2.6 0 1 1-2-2.53V11.5a4.6 4.6 0 1 0 4 4.56V11.8a5.6 5.6 0 0 0 3.4 1.16V10.9A3.6 3.6 0 0 1 16 7.4V6h-2z" fill="#25F4EE"/></svg>'
 };
- 
+
 // ---------- PLATFORM TABS ----------
 function renderPlatformTabs(){
   const wrap = document.getElementById('platformTabs');
@@ -592,7 +591,7 @@ function renderPlatformTabs(){
     wrap.appendChild(tab);
   });
 }
- 
+
 // ---------- DASHBOARD SERVICE CARDS ----------
 document.querySelectorAll('.service-card').forEach(card=>{
   card.addEventListener('click', ()=>{
@@ -608,7 +607,7 @@ document.querySelectorAll('.service-card').forEach(card=>{
     document.getElementById('order').scrollIntoView({behavior:'smooth'});
   });
 });
- 
+
 // ---------- 3D TILT ON PRICE CARDS ----------
 function attachTilt(card){
   const strength = 10;
@@ -622,7 +621,7 @@ function attachTilt(card){
     card.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) translateY(0)';
   });
 }
- 
+
 // ---------- PRICING GRID ----------
 function renderGrid(){
   const grid = document.getElementById('priceGrid');
@@ -648,7 +647,7 @@ function renderGrid(){
     attachTilt(card);
   });
 }
- 
+
 document.getElementById('typeTabs').addEventListener('click', (e)=>{
   const tab = e.target.closest('.tab');
   if(!tab) return;
@@ -658,7 +657,7 @@ document.getElementById('typeTabs').addEventListener('click', (e)=>{
   renderPlatformTabs();
   renderGrid();
 });
- 
+
 // ---------- ORDER FORM ----------
 function populatePlatformSelect(){
   const type = document.getElementById('fType').value;
@@ -698,7 +697,7 @@ document.getElementById('fType').addEventListener('change', ()=>{
 });
 document.getElementById('fPlatform').addEventListener('change', populatePackageSelect);
 document.getElementById('fPackage').addEventListener('change', updateTotal);
- 
+
 // copy buttons
 document.querySelectorAll('.copy').forEach(el=>{
   el.addEventListener('click', ()=>{
@@ -708,7 +707,7 @@ document.querySelectorAll('.copy').forEach(el=>{
     setTimeout(()=>el.textContent = orig, 1500);
   });
 });
- 
+
 // ---------- PAYMENT METHOD TOGGLE ----------
 const payMethodSelect = document.getElementById('fPayMethod');
 const manualPaidRow = document.getElementById('manualPaidRow');
@@ -720,12 +719,12 @@ function syncPayMethodUI(){
 }
 payMethodSelect.addEventListener('change', syncPayMethodUI);
 syncPayMethodUI();
- 
+
 // ---------- SEND ORDER EMAIL (shared by both payment paths) ----------
 function sendOrderEmail({type, platform, amountQty, priceStr, link, contact, paymentNote}){
   const statusMsg = document.getElementById('statusMsg');
   const submitBtn = document.getElementById('submitBtn');
- 
+
   const fallbackToMailto = () => {
     const subject = encodeURIComponent(`Шинэ захиалга — ${platform} ${amountQty}`);
     const body = encodeURIComponent(
@@ -741,9 +740,9 @@ function sendOrderEmail({type, platform, amountQty, priceStr, link, contact, pay
     statusMsg.style.color = 'var(--teal)';
     statusMsg.textContent = 'Имэйл клиент нээгдэж байна. Илгээгдэхгүй бол ' + DEST_EMAIL + ' руу гараар мэдээллээ бичиж явуулна уу.';
   };
- 
+
   if (!window.emailjs) { fallbackToMailto(); return; }
- 
+
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
     service_type: SERVICE[type].label,
     platform: platform,
@@ -767,7 +766,7 @@ function sendOrderEmail({type, platform, amountQty, priceStr, link, contact, pay
     fallbackToMailto();
   });
 }
- 
+
 // ---------- QPAY FLOW ----------
 let qpayPollTimer = null;
 function stopQpayPolling(){
@@ -778,14 +777,14 @@ function closeQpayModal(){
   document.getElementById('qpayModal').classList.add('hidden');
 }
 document.getElementById('qpayCancelBtn').addEventListener('click', closeQpayModal);
- 
+
 async function startQpayPayment(orderInfo){
   const statusMsg = document.getElementById('statusMsg');
   const submitBtn = document.getElementById('submitBtn');
   const qpayModal = document.getElementById('qpayModal');
   const qpayStatusText = document.getElementById('qpayStatusText');
   const qpayQrImg = document.getElementById('qpayQrImg');
- 
+
   try {
     const resp = await fetch('/api/qpay-invoice', {
       method: 'POST',
@@ -797,11 +796,11 @@ async function startQpayPayment(orderInfo){
     });
     const data = await resp.json();
     if (!resp.ok) throw new Error(data.error || 'QPay invoice үүсгэхэд алдаа гарлаа');
- 
+
     qpayQrImg.src = `data:image/png;base64,${data.qr_image}`;
     qpayStatusText.textContent = '⏳ Төлбөр хүлээж байна...';
     qpayStatusText.style.color = 'var(--teal)';
- 
+
     const appGrid = document.getElementById('qpayAppGrid');
     appGrid.innerHTML = '';
     (data.urls || []).forEach(u => {
@@ -811,9 +810,9 @@ async function startQpayPayment(orderInfo){
       a.innerHTML = `<img src="${u.logo}" style="width:32px;height:32px;border-radius:8px;" alt="${u.name}"><span style="font-size:10px;color:var(--text-dim);text-align:center;">${u.name}</span>`;
       appGrid.appendChild(a);
     });
- 
+
     qpayModal.classList.remove('hidden');
- 
+
     let elapsed = 0;
     const maxWaitMs = 5 * 60 * 1000; // 5 минут
     qpayPollTimer = setInterval(async () => {
@@ -842,7 +841,7 @@ async function startQpayPayment(orderInfo){
         console.error('QPay check error:', e);
       }
     }, 3000);
- 
+
   } catch (err) {
     console.error('QPay error:', err);
     submitBtn.disabled = false;
@@ -852,7 +851,7 @@ async function startQpayPayment(orderInfo){
     statusMsg.textContent = 'QPay холболтод алдаа гарлаа: ' + err.message;
   }
 }
- 
+
 // ---------- MAIN SUBMIT ----------
 document.getElementById('submitBtn').addEventListener('click', ()=>{
   const type = document.getElementById('fType').value;
@@ -863,14 +862,14 @@ document.getElementById('submitBtn').addEventListener('click', ()=>{
   const payMethod = document.getElementById('fPayMethod').value;
   const statusMsg = document.getElementById('statusMsg');
   const submitBtn = document.getElementById('submitBtn');
- 
+
   if(!link || !contact){
     statusMsg.style.display='block';
     statusMsg.style.color = 'var(--coral)';
     statusMsg.textContent = 'Профайл линк болон холбоо барих мэдээллээ бөглөнө үү.';
     return;
   }
- 
+
   if (payMethod === 'manual' && !document.getElementById('fPaid').checked){
     statusMsg.style.display='block';
     statusMsg.style.color = 'var(--coral)';
@@ -883,34 +882,34 @@ document.getElementById('submitBtn').addEventListener('click', ()=>{
     statusMsg.textContent = 'Үйлчилгээний нөхцөлийг зөвшөөрнө үү.';
     return;
   }
- 
+
   const item = SERVICE[type].platforms[platform].find(i=>i.n===parseInt(n));
   const unit = unitLabel(type);
   const amountQty = `${Number(n).toLocaleString('mn-MN')} ${unit}`;
   const priceStr = item ? fmt(item.p) : '';
   const priceNumber = item ? item.p : 0;
- 
+
   submitBtn.disabled = true;
   submitBtn.textContent = payMethod === 'qpay' ? 'QR бэлдэж байна...' : 'Илгээж байна...';
   statusMsg.style.display='block';
   statusMsg.style.color = 'var(--text-dim)';
   statusMsg.textContent = payMethod === 'qpay' ? 'QPay нэхэмжлэх бэлдэж байна...' : 'Захиалга илгээж байна...';
- 
+
   const orderInfo = { type, platform, amountQty, priceStr, priceNumber, link, contact };
- 
+
   if (payMethod === 'qpay') {
     startQpayPayment(orderInfo);
   } else {
     sendOrderEmail({ ...orderInfo, paymentNote: 'Дансаар шилжүүлсэн (гараар шалгагдана)' });
   }
 });
- 
- 
+
+
 // ---------- TERMS MODAL (session-only, no localStorage) ----------
 document.getElementById('agreeBtn').addEventListener('click', ()=>{
   document.getElementById('rulesModal').classList.add('hidden');
 });
- 
+
 // ---------- GOOGLE SIGN-IN ----------
 function handleGoogleSignIn(response) {
   const payload = JSON.parse(atob(response.credential.split('.')[1]));
@@ -920,20 +919,20 @@ function handleGoogleSignIn(response) {
   googleBtn.disabled = true;
   googleBtn.style.opacity = '0.8';
 }
- 
+
 if (window.google && google.accounts && google.accounts.id) {
   google.accounts.id.initialize({
     client_id: '1049407772962-hhluqsebfbumfj5q1qnrjcigv53tlspm.apps.googleusercontent.com',
     callback: handleGoogleSignIn
   });
 }
- 
+
 document.getElementById('googleBtn').addEventListener('click', ()=>{
   if (window.google && google.accounts && google.accounts.id) {
     google.accounts.id.prompt();
   }
 });
- 
+
 // init
 populatePlatformSelect();
 populatePackageSelect();
